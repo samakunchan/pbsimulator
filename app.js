@@ -9,7 +9,6 @@ app.set('view engine', 'pug');
 app.get("/", (req, res)=>{
   console.log(All);
   let gods = new All();
-  console.log(gods);
-  gods.affiche();
+  gods.afficheToConsole();
   res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
