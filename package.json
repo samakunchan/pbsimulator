@@ -1,0 +1,26 @@
+{
+  "name": "pbsimulator",
+  "version": "1.0.0",
+  "description": "Picks and Bans simulator Smite or others moba",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samakunchan/pbsimulator.git"
+  },
+  "author": "Samakunchan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samakunchan/pbsimulator/issues"
+  },
+  "homepage": "https://github.com/samakunchan/pbsimulator#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "pug": "^2.0.0-rc.4",
+    "socket.io": "^2.0.4"
+  }
+}
