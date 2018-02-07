@@ -1,0 +1,38 @@
+html
+  head
+    link(rel="stylesheet" href="../css/style.css")
+    title!= title
+  body
+    header
+      nav.nav.little-bar
+        div.title
+          a(href='#') Pick ban simulator
+        div.tutoriel
+          div.button.primary
+            a(href='#') Tutoriel
+    h1 Ajouter un dieux avec le formulaire ci-dessous
+    div.button.primary
+      a(href='/') Retour
+    <!--form for insert gods-->
+    form#form(method='post')
+      p
+        label(for="name") Nom
+        input#name(type="text" name="name" placeholder="nom du dieu")
+      p
+        label(for="pantheon") Pantheon
+        select#pantheon(name="pantheon")
+          option(value="egypt") Egyptien
+          option(value="greek") Grecques
+          option(value="roman") Romain
+          option(value="chinese") Chinois
+          option(value="norse") Nordique
+          option(value="mayan") Mayas
+          option(value="japanese") Japonais
+          option(value="hindu") Hindou
+          option(value="celtic") Celtique
+        input(type="submit" value="Envoyer")
+
+      script.
+        document.getElementById("form").addEventListener("submit", function(event){
+        event.preventDefault();
+        });

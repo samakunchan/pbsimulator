@@ -1,3 +1,31 @@
-body{
-  background-color: grey;
+/*---------------------------------------------------------*/
+/*--------------GENERAL CONFIG-----------------------------*/
+/*---------------------------------------------------------*/
+a{
+  text-decoration: none;
+  color: inherit;
+}
+.button{
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+}
+.button:hover{
+    background-color: #006bff;
+}
+.primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.nav{
+  display: flex;
+  justify-content: space-around;
+}
+/*---------------------------------------------------------*/
+/*--------------THE WEBSITE--------------------------------*/
+/*---------------------------------------------------------*/
+.title a {
+  color: blue;
 }
