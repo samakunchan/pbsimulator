@@ -32,7 +32,12 @@ html
           option(value="celtic") Celtique
         input(type="submit" value="Envoyer")
       p#texte
+      script(src="/socket.io/socket.io.js")
       script.
+        var socket = io.connect('http://localhost:1000');
+
         document.getElementById("form").addEventListener("submit", function(event){
         event.preventDefault();
+        socket.emit("nameValue", document.getElementById("form").elements.name.value);
+        socket.emit("pantheonValue", document.getElementById("form").elements.pantheon.value);
         });
