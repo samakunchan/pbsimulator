@@ -1,20 +1,18 @@
 const express = require("express");
 const app = express();
 
-const bodyParser = require("body-parser");
-const methodOverride = require('method-override');
-
 const port = 1000;
-const http = require("http");
-
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 server.listen(port, ()=>{console.log("Vous êtes sur le port : " + port);});
-
-const DB = require("./public/js/dataBase");
-const All = require("./public/js/allgods");
-//
+//Middleware
+const bodyParser = require("body-parser");
+const methodOverride = require('method-override');
+//Class
+const DB = require("./public/js/DataBase");
+const All = require("./public/js/Allgods");
+//Views
 app.use(express.static(__dirname + '/public'));//Pour le css et les autres fichiers js
 
 app.set('view engine', 'pug');
@@ -29,13 +27,19 @@ app.get("/insert", (req, res)=>{
 app.get('*', function(req, res){
   res.status(404).send("La page que vous demandez n'existe pas.");
 });
-//
+//Socket.io
 io.on('connection', (socket)=>{
   console.log("Connection a socket.io réussi.");
   let arrayOfGods = [];
   let db = new DB();
-  socket.on("nameValue", (result)=>{ arrayOfGods.push(result)});
-  socket.on("pantheonValue", (result)=>{ arrayOfGods.push(result);});
+  socket.on("dataGods", (result)=>{
+    let goodCreate = db.create(result.name, result.pantheon);
+    if (goodCreate) {
+      socket.emit("success", result.name + " a été ajouté!!");
+    }else {
+      socket.emit("fail", "Les champs ne peuvent être vide.!!");
+    }
+  });
 });
 
 ///////////////////GESTION DES ERREURS////////////////////////////////

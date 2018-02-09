@@ -11,6 +11,7 @@ html
           div.button.primary
             a(href='#') Tutoriel
     h1 Ajouter un dieux avec le formulaire ci-dessous
+    h3#messageFlash
     div.button.primary
       a(href='/') Retour
     <!--form for insert gods-->
@@ -38,6 +39,12 @@ html
 
         document.getElementById("form").addEventListener("submit", function(event){
         event.preventDefault();
-        socket.emit("nameValue", document.getElementById("form").elements.name.value);
-        socket.emit("pantheonValue", document.getElementById("form").elements.pantheon.value);
+        socket.emit("dataGods", {name : document.getElementById("form").elements.name.value, pantheon : document.getElementById("form").elements.pantheon.value});
         });
+
+        socket.on("success", (result)=>{
+        document.getElementById("messageFlash").innerHTML = result;
+        })
+        socket.on("fail", (result)=>{
+        document.getElementById("messageFlash").innerHTML = result;
+        })

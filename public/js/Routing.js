@@ -4,6 +4,6 @@ class Routing {
     const app = express();//
   }
   theGoodRoute(){
-    
+    //mettre ici tout les app.get
   }
 }
