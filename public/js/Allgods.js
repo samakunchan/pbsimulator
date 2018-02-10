@@ -1,3 +1,4 @@
+//Utilisé pour faire des test sur les class
 class Gods {
   constructor() {
     this.arrayOfAllGods = ["anubis", "ao kuang", "agni", "apollo"];

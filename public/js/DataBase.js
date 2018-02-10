@@ -8,11 +8,10 @@ class DataBase {
       database: "pbss"
     };
     this.db = this.mysql.createConnection(this.paramater);
-    this.db.connect((err)=>{if (err) throw err;
-  console.log("Vous êtes connectés à la base de donnée :" + this.paramater.database);})
+    this.db.connect((err)=>{if (err) throw err;})
   }
 }
-
+/*
 class Manager extends DataBase{
   create(name, pantheon){
     if (name !== "" && pantheon !== "") {
@@ -21,13 +20,27 @@ class Manager extends DataBase{
     }else {
       return false;
     }
-    console.log("DB2 : "+name);
   }
+
   readAll(){
-    this.db.query("SELECT * FROM gods", (err, result)=> {if (err) throw err;});
+    let readAllData = null;
+    this.db.query("SELECT * FROM gods", (err, result, fields)=> {
+      if (err) throw err;
+      this.readAllData = result[0].name;
+      console.log(this.readAllData);
+    });
+    return this.readAllData;
   }
+
   readOneGods(nameParam){
     this.db.query("SELECT name FROM gods WHERE name=?",[nameParam], (err, result)=> {if (err) throw err;});
   }
-}
-module.exports = Manager;
+
+  readPantheon(param){
+    this.db.query("SELECT * FROM gods WHERE pantheon=?",[param], (err, result)=> {if (err) throw err;});
+  }
+  get getResult(){
+    return this.resultData;
+  }
+}*/
+module.exports = DataBase;

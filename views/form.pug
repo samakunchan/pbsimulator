@@ -12,6 +12,7 @@ html
             a(href='#') Tutoriel
     h1 Ajouter un dieux avec le formulaire ci-dessous
     h3#messageFlash
+    h3#test
     div.button.primary
       a(href='/') Retour
     <!--form for insert gods-->
@@ -23,16 +24,25 @@ html
         label(for="pantheon") Pantheon
         select#pantheon(name="pantheon")
           option(value="egypt") Egyptien
-          option(value="greek") Grecques
-          option(value="roman") Romain
-          option(value="chinese") Chinois
-          option(value="norse") Nordique
-          option(value="mayan") Mayas
-          option(value="japanese") Japonais
-          option(value="hindu") Hindou
+          option(value="greek" ) Grecques
+          option(value="roman" ) Romain
+          option(value="chinese" ) Chinois
+          option(value="norse" ) Nordique
+          option(value="mayan" ) Mayas
+          option(value="japanese" selected = true) Japonais
+          option(value="hindu" ) Hindou
           option(value="celtic") Celtique
         input(type="submit" value="Envoyer")
-      p#texte
+      h2 Les dieux déjà dans la DBB.
+      div#egypt
+        ul
+          each val in all
+            li
+              p= val.name + " : "
+                em= val.pantheon
+
+
+
       script(src="/socket.io/socket.io.js")
       script.
         var socket = io.connect('http://localhost:1000');
@@ -44,7 +54,10 @@ html
 
         socket.on("success", (result)=>{
         document.getElementById("messageFlash").innerHTML = result;
-        })
+        setTimeout(()=>{
+        window.location.reload();}, 1000);
+        });
+
         socket.on("fail", (result)=>{
         document.getElementById("messageFlash").innerHTML = result;
-        })
+        });
