@@ -19,6 +19,11 @@ a{
     background-color: #007bff;
     border-color: #007bff;
 }
+.secondary {
+    color: #fff;
+    background-color: #848D94;
+    border-color: #848D94;
+}
 .nav{
   display: flex;
   justify-content: space-around;
@@ -28,4 +33,53 @@ a{
 /*---------------------------------------------------------*/
 .title a {
   color: blue;
+}
+/*---------------------------------------------------------*/
+/*--------------CONTROLLER---------------------------------*/
+/*---------------------------------------------------------*/
+.off{
+  display: none;
+}
+
+.active{
+  display: block;
+}
+form{
+  width: 100%;
+}
+span{
+  display: inline-flex;
+  margin: 5px;
+}
+input[type=radio]{
+  display: none;
+}
+
+.pb1:checked + .lpb1 {
+  color: #f00;
+  font-style: normal;
+  box-shadow: 3px 3px 3px black;
+}
+
+.pb2:checked + .lpb2{
+  color: blue;
+  font-style: normal;
+  box-shadow: 3px 3px 3px black;
+}
+.pb3:checked + .lpb3 {
+  color: green;
+  font-style: normal;
+  box-shadow: 3px 3px 3px black;
+}
+
+.pb4:checked + .lpb4{
+  color: purple;
+  font-style: normal;
+  box-shadow: 3px 3px 3px black;
+}
+
+.pb5:checked + .lpb5{
+  color: pink;
+  font-style: normal;
+  box-shadow: 3px 3px 3px black;
 }

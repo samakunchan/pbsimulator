@@ -16,3 +16,4 @@ Idées :
 - les deux : On persiste la session que stock les données pendant quelques heures (4H par exemple). On peut proposer de garder la même session (bouton qui update le timer).
 
 L'utilisateur entre son pseudo ou le nom de l'organisation. Ce nom va apparaître dans le title de l'onglet
+le type radio c'est la liste des dieux et le bouton fait apparaître la liste

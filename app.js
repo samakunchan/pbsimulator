@@ -27,8 +27,15 @@ app.get("/insert", (req, res)=>{
   });
   mysql.db.query("SELECT * FROM gods", (err, result, fields)=> {
     if (err) throw err;
-    console.log(result[0]);
     res.render('form', {all : result});
+  });
+});
+
+app.get("/controleur", (req, res)=>{
+  let mysql = new DB();
+  mysql.db.query("SELECT * FROM gods ORDER BY name", (err, result, fields)=> {
+    if (err) throw err;
+    res.render('controleur', { title: 'Controller', message: 'Ceci est la partie controleur', allGods : result});
   });
 });
 app.get('*', function(req, res){

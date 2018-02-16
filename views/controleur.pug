@@ -1,0 +1,50 @@
+html
+  head
+    link(rel="stylesheet" href="../css/style.css")
+    title!= title
+  body
+    h1!= message
+    button#playerBtn1.player Joueur 1
+    button#playerBtn2.player Joueur 2
+    button#playerBtn3.player Joueur 3
+    button#playerBtn4.player Joueur 4
+    button#playerBtn5.player Joueur 5
+
+    form#player1.active(method='post')
+      p Formulaire 1
+      each val in allGods
+        span
+          input.pb1(type="radio" name="player1" value="" + val.name + "" id="" + val.name + "1")
+          label.lpb1.button.secondary(for="" + val.name + "1" tabindex = 1)=val.name
+
+    form#player2.off(method='post')
+      p Formulaire 2
+      each val in allGods
+        span
+          input.pb2(type="radio" name="player2" value="" + val.name + "" id="" + val.name + "2")
+          label.lpb2.button.secondary(for="" + val.name + "2" tabindex = 2)=val.name
+
+    form#player3.off(method='post')
+      p Formulaire 3
+      each val in allGods
+        span
+          input.pb3(type="radio" name="player3" value="" + val.name + "" id="" + val.name + "3")
+          label.lpb3.button.secondary(for="" + val.name + "3" tabindex = 3)=val.name
+
+    form#player4.off(method='post')
+      p Formulaire 4
+      each val in allGods
+        span
+          input.pb4(type="radio" name="player4" value="" + val.name + "" id="" + val.name + "4")
+          label.lpb4.button.secondary(for="" + val.name + "4" tabindex = 4)=val.name
+
+    form#player5.off(method='post')
+      p Formulaire 5
+      each val in allGods
+        span
+          input.pb5(type="radio" name="player5" value="" + val.name + "" id="" + val.name + "5")
+          label.lpb5.button.secondary(for="" + val.name + "5" tabindex = 5)=val.name
+
+
+
+    script(src="../js/jsstyle/controllerButton.js")

@@ -6,10 +6,17 @@ html
     header
       nav.nav.little-bar
         div.title
-          a(href='#') Pick ban simulator
+          a(href='/') Pick ban simulator
         div.tutoriel
           div.button.primary
             a(href='#') Tutoriel
     h1!= message
     div.button.primary
       a(href='/insert') Ajouter
+    button.button.primary#controller Ouvrir le contrôleur
+
+
+    script.
+      document.getElementById("controller").addEventListener("click", (event)=>{
+      window.open ("/controleur", "mywindowcontroller","menubar=no, scrollbars=no, top=100, left=100, width=500, height=400");
+      });
