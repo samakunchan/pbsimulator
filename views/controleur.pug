@@ -51,7 +51,7 @@ html
     script(src="/socket.io/socket.io.js")
     script.
       var socket = io.connect('http://localhost:1000');
-      socket.emit("coCtrl", "Connection a controlleur.pug <=> socket.io réussi.")
+      //socket.emit("coCtrl", "Connection a controlleur.pug <=> socket.io réussi.")
 
       socket.on("dataAllGods", (result)=>{
       result.forEach((data)=>{
@@ -81,4 +81,8 @@ html
       });//fin addEventListener
 
       });//fin foreach
-      });//fin socket
+      });//fin socket dataAllGods
+
+      socket.on("statusConnection", (result)=>{
+          window.close();
+      })

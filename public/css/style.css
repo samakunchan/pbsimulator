@@ -83,3 +83,10 @@ input[type=radio]{
   font-style: normal;
   box-shadow: 3px 3px 3px black;
 }
+/*---------------------------------------------------------*/
+/*--------------CONTROLLER---------------------------------*/
+/*---------------------------------------------------------*/
+#bluePlayers{
+  display: flex;
+  justify-content: space-around;
+}

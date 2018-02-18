@@ -13,36 +13,50 @@ html
     h1!= message
 
     section
-      div#bluePlayer
-        p#player1
-        p#player2
-        p#player3
-        p#player4
-        p#player5
+      div#bluePlayers
+        div.player1
+          h4  Joueur 1
+          p#player1
+        div.player2
+          h4  Joueur 2
+          p#player2
+        div.player3
+          h4  Joueur 3
+          p#player3
+        div.player4
+          h4  Joueur 4
+          p#player4
+        div.player5
+          h4  Joueur 5
+          p#player5
 
 
     script(src="/socket.io/socket.io.js")
     script.
       var socket = io.connect('http://localhost:1000');
-      socket.emit("coOverV", "Connection a overview.pug <=> socket.io réussi.")
+      //socket.emit("coOverV", "Connection a overview.pug <=> socket.io réussi.")
 
       socket.on("godChoose1", (result)=>{
-      console.log("godChoose1: "+result);
-      document.getElementById("player1").innerHTML = result;
-      })
+        console.log("godChoose1: "+result);
+        document.getElementById("player1").innerHTML = result;
+      });
       socket.on("godChoose2", (result)=>{
-      console.log("godChoose2: "+result);
-      document.getElementById("player2").innerHTML = result;
-      })
+        console.log("godChoose2: "+result);
+        document.getElementById("player2").innerHTML = result;
+      });
       socket.on("godChoose3", (result)=>{
-      console.log("godChoose3: "+result);
-      document.getElementById("player3").innerHTML = result;
-      })
+        console.log("godChoose3: "+result);
+        document.getElementById("player3").innerHTML = result;
+      });
       socket.on("godChoose4", (result)=>{
-      console.log("godChoose4: "+result);
-      document.getElementById("player4").innerHTML = result;
-      })
+        console.log("godChoose4: "+result);
+        document.getElementById("player4").innerHTML = result;
+      });
       socket.on("godChoose5", (result)=>{
-      console.log("godChoose5: "+result);
-      document.getElementById("player5").innerHTML = result;
-      })
+        console.log("godChoose5: "+result);
+        document.getElementById("player5").innerHTML = result;
+      });
+      socket.on("statusConnection", (result)=>{
+        alert("Controller disconnected !!");
+        setTimeout(()=>{window.location.href = '/';}, 500);
+      });
