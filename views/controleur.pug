@@ -52,11 +52,33 @@ html
     script.
       var socket = io.connect('http://localhost:1000');
       socket.emit("coCtrl", "Connection a controlleur.pug <=> socket.io réussi.")
-      var test = document.getElementsByClassName("pb1");
+
       socket.on("dataAllGods", (result)=>{
       result.forEach((data)=>{
       document.getElementById(""+data.name+"1").addEventListener("click", (event)=>{
-      console.log(document.getElementById(""+data.name+"1").value)
+      console.log("Data selected from controleur1: "+document.getElementById(""+data.name+"1").value)
+      socket.emit("godSelected1", document.getElementById(""+data.name+"1").value);
       });//fin addEventListener
+
+      document.getElementById(""+data.name+"2").addEventListener("click", (event)=>{
+      console.log("Data selected from controleur2: "+document.getElementById(""+data.name+"2").value)
+      socket.emit("godSelected2", document.getElementById(""+data.name+"2").value);
+      });//fin addEventListener
+
+      document.getElementById(""+data.name+"3").addEventListener("click", (event)=>{
+      console.log("Data selected from controleur3: "+document.getElementById(""+data.name+"3").value)
+      socket.emit("godSelected3", document.getElementById(""+data.name+"3").value);
+      });//fin addEventListener
+
+      document.getElementById(""+data.name+"4").addEventListener("click", (event)=>{
+      console.log("Data selected from controleur4: "+document.getElementById(""+data.name+"4").value)
+      socket.emit("godSelected4", document.getElementById(""+data.name+"4").value);
+      });//fin addEventListener
+
+      document.getElementById(""+data.name+"5").addEventListener("click", (event)=>{
+      console.log("Data selected from controleur5: "+document.getElementById(""+data.name+"5").value)
+      socket.emit("godSelected5", document.getElementById(""+data.name+"5").value);
+      });//fin addEventListener
+
       });//fin foreach
       });//fin socket

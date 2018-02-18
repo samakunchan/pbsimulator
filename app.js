@@ -53,11 +53,31 @@ io.on('connection', (socket)=>{
   socket.on("coOverV", (result)=>{
     console.log(result);
   });
+  socket.on("godSelected1", (result)=>{
+    console.log("godSelected1 :" + result);
+    socket.broadcast.emit("godChoose1", result);
+  });
+  socket.on("godSelected2", (result)=>{
+    console.log("godSelected2 :" + result);
+    socket.broadcast.emit("godChoose2", result);
+  });
+  socket.on("godSelected3", (result)=>{
+    console.log("godSelected3 :" + result);
+    socket.broadcast.emit("godChoose3", result);
+  });
+  socket.on("godSelected4", (result)=>{
+    console.log("godSelected4 :" + result);
+    socket.broadcast.emit("godChoose4", result);
+  });
+  socket.on("godSelected5", (result)=>{
+    console.log("godSelected5 :" + result);
+    socket.broadcast.emit("godChoose5", result);
+  });
   let mysql = new DB();
   mysql.db.query("SELECT * FROM gods ORDER BY name", (err, result, fields)=> {
     if (err) throw err;
     socket.emit("dataAllGods", result);
-  })
+  });
 //fin query
 });//fin io
 
