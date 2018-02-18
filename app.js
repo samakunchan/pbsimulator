@@ -19,12 +19,9 @@ app.set('view engine', 'pug');
 app.get("/", (req, res)=>{
   res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
-app.get("/insert", (req, res)=>{
+app.get("/insert", (req, res)=>{//Amener a disparaître
   let mysql = new DB();
-  mysql.db.query("SELECT * FROM gods WHERE pantheon=?",["japanese"], (err, result)=> {
-    if (err) throw err;
-    //res.render('form', {egypt : result});
-  });
+  mysql.db.query("SELECT * FROM gods WHERE pantheon=?",["japanese"], (err, result)=> {if (err) throw err;});
   mysql.db.query("SELECT * FROM gods", (err, result, fields)=> {
     if (err) throw err;
     res.render('form', {all : result});
@@ -38,23 +35,28 @@ app.get("/controleur", (req, res)=>{
     res.render('controleur', { title: 'Controller', message: 'Ceci est la partie controleur', allGods : result});
   });
 });
+
+app.get("/overview", (req, res)=>{
+  res.render('overview', { title: 'Hey', message: 'Hello there! - Overview'});
+})
 app.get('*', function(req, res){
   res.status(404).send("La page que vous demandez n'existe pas.");
 });
 //Socket.io
 io.on('connection', (socket)=>{
-  console.log("Connection a socket.io réussi.");
-  socket.on("dataGods", (result)=>{
-    console.log("Reception donnée : " + result.name);
-    let mysql = new DB();
-    if (result.name !== "" && result.pantheon !== "") {
-      mysql.db.query("INSERT INTO gods (name, pantheon) VALUES (?,?)",[result.name, result.pantheon], (err, result)=>{if (err) throw err;})
-      socket.emit("success", result.name + " a été ajouté avec succès!!");
-      return true;
-    }else {
-      socket.emit("fail", "Les champs ne doivent pas être vide");
-      return false;
-    }
+  socket.on("coCtrl", (result)=>{
+    console.log(result);
+  });
+  socket.on("coForm", (result)=>{
+    console.log(result);
+  });
+  socket.on("coOverV", (result)=>{
+    console.log(result);
+  });
+  let mysql = new DB();
+  mysql.db.query("SELECT * FROM gods ORDER BY name", (err, result, fields)=> {
+    if (err) throw err;
+    socket.emit("dataAllGods", result);
   })
 //fin query
 });//fin io
@@ -79,3 +81,29 @@ app.use((err, req, res, next)=>{//logError
     res.status(500).send("Il y a une erreur : " + err);
     next(err);
 });
+
+
+
+
+
+
+
+
+/*
+//Socket.io
+io.on('connection', (socket)=>{
+  console.log("Connection a socket.io réussi.");
+  socket.on("dataGods", (result)=>{
+    let mysql = new DB();
+    if (result.name !== "" && result.pantheon !== "") {
+      mysql.db.query("INSERT INTO gods (name, pantheon) VALUES (?,?)",[result.name, result.pantheon], (err, result)=>{if (err) throw err;})
+      socket.emit("success", result.name + " a été ajouté avec succès!!");
+      return true;
+    }else {
+      socket.emit("fail", "Les champs ne doivent pas être vide");
+      return false;
+    }
+  })
+//fin query
+});//fin io
+*/
