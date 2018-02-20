@@ -47,17 +47,21 @@ html
       script.
         var socket = io.connect('http://localhost:1000');
         //socket.emit("coForm", "Connection a form.pug <=> socket.io réussi.")
-        document.getElementById("form").addEventListener("submit", function(event){
-        event.preventDefault();
-        socket.emit("dataGods", {name : document.getElementById("form").elements.name.value, pantheon : document.getElementById("form").elements.pantheon.value});
+        document.getElementById("form").addEventListener("submit", function(event) {
+          event.preventDefault();
+          socket.emit("dataGods", {
+            name: document.getElementById("form").elements.name.value,
+            pantheon: document.getElementById("form").elements.pantheon.value
+          });
         });
 
-        socket.on("success", (result)=>{
-        document.getElementById("messageFlash").innerHTML = result;
-        setTimeout(()=>{
-        window.location.reload();}, 1000);
+        socket.on("success", (result) => {
+          document.getElementById("messageFlash").innerHTML = result;
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
         });
 
-        socket.on("fail", (result)=>{
-        document.getElementById("messageFlash").innerHTML = result;
+        socket.on("fail", (result) => {
+          document.getElementById("messageFlash").innerHTML = result;
         });

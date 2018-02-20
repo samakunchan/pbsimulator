@@ -1,92 +1,116 @@
 /*---------------------------------------------------------*/
+
 /*--------------GENERAL CONFIG-----------------------------*/
+
 /*---------------------------------------------------------*/
-a{
+
+a {
   text-decoration: none;
   color: inherit;
 }
-.button{
+
+.button {
   padding: 10px;
   border-radius: 5px;
   display: inline-block;
   text-align: center;
 }
-.button:hover{
-    background-color: #006bff;
+
+.button:hover {
+  background-color: #006bff;
 }
+
 .primary {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 }
+
 .secondary {
-    color: #fff;
-    background-color: #848D94;
-    border-color: #848D94;
+  color: #fff;
+  background-color: #848D94;
+  border-color: #848D94;
 }
-.nav{
+
+.nav {
   display: flex;
   justify-content: space-around;
 }
+
 /*---------------------------------------------------------*/
+
 /*--------------THE WEBSITE--------------------------------*/
+
 /*---------------------------------------------------------*/
+
 .title a {
   color: blue;
 }
+
 /*---------------------------------------------------------*/
+
 /*--------------CONTROLLER---------------------------------*/
+
 /*---------------------------------------------------------*/
-.off{
+
+.off {
   display: none;
 }
 
-.active{
+.active {
   display: block;
 }
-form{
+
+form {
   width: 100%;
 }
-span{
+
+span {
   display: inline-flex;
   margin: 5px;
 }
-input[type=radio]{
+
+input[type=radio] {
   display: none;
 }
 
-.pb1:checked + .lpb1 {
+.pb1:checked+.lpb1 {
   color: #f00;
   font-style: normal;
   box-shadow: 3px 3px 3px black;
 }
 
-.pb2:checked + .lpb2{
+.pb2:checked+.lpb2 {
   color: blue;
   font-style: normal;
   box-shadow: 3px 3px 3px black;
 }
-.pb3:checked + .lpb3 {
+
+.pb3:checked+.lpb3 {
   color: green;
   font-style: normal;
   box-shadow: 3px 3px 3px black;
 }
 
-.pb4:checked + .lpb4{
+.pb4:checked+.lpb4 {
   color: purple;
   font-style: normal;
   box-shadow: 3px 3px 3px black;
 }
 
-.pb5:checked + .lpb5{
+.pb5:checked+.lpb5 {
   color: pink;
   font-style: normal;
   box-shadow: 3px 3px 3px black;
 }
+
 /*---------------------------------------------------------*/
+
 /*--------------CONTROLLER---------------------------------*/
+
 /*---------------------------------------------------------*/
-#bluePlayers{
+
+#bluePlayers {
   display: flex;
   justify-content: space-around;
 }
